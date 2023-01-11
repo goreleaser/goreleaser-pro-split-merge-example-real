@@ -21,14 +21,17 @@ jobs:
       flags: ""
     steps:
       - if: ${{ github.event_name == 'workflow_dispatch' }}
+        shell: bash
         run: echo "flags=--nightly" >> $GITHUB_ENV
       - if: matrix.os == 'ubuntu-latest'
+        shell: bash
         run: echo "goos=linux" >> $GITHUB_ENV
       - if: matrix.os == 'macos-latest'
+        shell: bash
         run: echo "goos=darwin" >> $GITHUB_ENV
       - if: matrix.os == 'windows-latest'
+        shell: bash
         run: echo "goos=windows" >> $GITHUB_ENV
-      - run: echo "${{ env.flags }} @ ${{ env.goos }}"
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
