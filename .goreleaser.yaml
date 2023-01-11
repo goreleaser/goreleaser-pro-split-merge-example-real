@@ -79,31 +79,31 @@ dockers:
   - "--label=org.opencontainers.image.source={{.GitURL}}"
   - "--platform=linux/arm64"
   use: buildx
-- image_templates:
-  - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-windows-amd64'
-  build_flag_templates:
-  - "--pull"
-  - "--label=org.opencontainers.image.description=Just an example-real"
-  - "--label=org.opencontainers.image.created={{.Date}}"
-  - "--label=org.opencontainers.image.name={{.ProjectName}}"
-  - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-  - "--label=org.opencontainers.image.version={{.Version}}"
-  - "--label=org.opencontainers.image.source={{.GitURL}}"
-  - "--platform=windows/amd64"
-  goos: windows
-  dockerfile: windows.dockerfile
+# - image_templates:
+#   - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-windows-amd64'
+#   build_flag_templates:
+#   - "--pull"
+#   - "--label=org.opencontainers.image.description=Just an example-real"
+#   - "--label=org.opencontainers.image.created={{.Date}}"
+#   - "--label=org.opencontainers.image.name={{.ProjectName}}"
+#   - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+#   - "--label=org.opencontainers.image.version={{.Version}}"
+#   - "--label=org.opencontainers.image.source={{.GitURL}}"
+#   - "--platform=windows/amd64"
+#   goos: windows
+#   dockerfile: windows.dockerfile
 
 docker_manifests:
 - name_template: 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}'
   image_templates:
   - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-amd64'
   - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-arm64'
-  - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-windows-amd64'
+  # - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-windows-amd64'
 - name_template: '{{ if not .IsNightly }}ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:latest{{ end }}'
   image_templates:
   - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-amd64'
   - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-arm64'
-  - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-windows-amd64'
+  # - 'ghcr.io/caarlos0/goreleaser-pro-split-merge-example-real:v{{ .Version }}-windows-amd64'
 
 monorepo:
   tag_prefix: v # so it always filters out the nightly tag
