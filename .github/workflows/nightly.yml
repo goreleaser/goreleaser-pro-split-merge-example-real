@@ -108,6 +108,7 @@ jobs:
         with:
           path: dist/windows
           key: windows-${{ env.sha_short }}
+          enableCrossOsArchive: true
 
 
       # release
