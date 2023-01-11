@@ -57,6 +57,9 @@ jobs:
           path: dist\windows
           key: windows-${{ env.sha_short }}
           enableCrossOsArchive: true
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        shell: bash
+        run: echo "flags=--nightly" >> $GITHUB_ENV
       - uses: goreleaser/goreleaser-action@v4
         with:
           distribution: goreleaser-pro
