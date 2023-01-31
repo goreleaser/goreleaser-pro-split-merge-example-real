@@ -1,3 +1,7 @@
+# modelines, feel free to remove those if you don't want/use them:
+# yaml-language-server: $schema=https://goreleaser.com/static/schema-pro.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj
+#
 # This is an example-real .goreleaser.yml file with some sensible defaults.
 # Make sure to check the documentation at https://goreleaser.com
 before:
@@ -150,6 +154,3 @@ docker_signs:
   - '${artifact}'
 
 
-# modelines, feel free to remove those if you don't want/use them:
-# yaml-language-server: $schema=https://goreleaser.com/static/schema-pro.json
-# vim: set ts=2 sw=2 tw=0 fo=cnqoj
